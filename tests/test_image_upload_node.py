@@ -79,8 +79,8 @@ def test_repeat_send_achieves_requested_rate(node_classes):
         node.receive_image(_jpeg_bytes(), 'pic.jpg')
         t0 = time.perf_counter()
         time.sleep(window)
-        count = len(sink.received)
         node.on_stop()
+        count = len(sink.received)
         elapsed = time.perf_counter() - t0
         rate = count / elapsed
         assert rate >= 20, f"repeat rate {rate:.1f}/s too low (requested 30)"
